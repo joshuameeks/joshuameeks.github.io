@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joshua Meeks, PhD</title>
+<meta name="description" content="Joshua Meeks, historian of strategy, war, and statecraft and Associate Professor of Strategy and Policy at the US Naval War College.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+/* Layout: a quiet scholarly page. Caslon (the type of the 18th-century Atlantic world) for the name and headings,
+   a narrow reading column, dates set in a margin column like a bibliography. Cool chart-paper ground, naval ink. */
+:root {
+  --bg: #f4f6f7;
+  --surface: #ffffff;
+  --ink: #15202c;
+  --muted: #586572;
+  --rule: #d4dbe1;
+  --accent: #1d4a72;
+  --brass: #8c6d2e;
+  --display: "Libre Caslon Display", "Baskerville", "Times New Roman", serif;
+  --body: "Source Serif 4", "Georgia", "Times New Roman", serif;
+  --ui: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e151d; --surface: #141d27; --ink: #e3e8ed; --muted: #98a5b2;
+    --rule: #283442; --accent: #93b8dc; --brass: #cbab69; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e151d; --surface: #141d27; --ink: #e3e8ed; --muted: #98a5b2;
+  --rule: #283442; --accent: #93b8dc; --brass: #cbab69; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 1.075rem; line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 60rem; margin: 0 auto; }
+a { color: var(--accent); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+/* Header */
+.site-header { border-bottom: 1px solid var(--rule); padding-block: 2rem 1.1rem; }
+.site-header .wrap { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 1rem 2rem; }
+.name { font-family: var(--display); font-size: 2rem; line-height: 1.1; color: var(--ink); text-decoration: none; letter-spacing: 0.005em; }
+.name small { font-size: 0.55em; color: var(--muted); margin-left: 0.25em; letter-spacing: 0.06em; }
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem 1.4rem; }
+nav a { font-family: var(--ui); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding-block: 0.2rem; border-bottom: 1px solid transparent; }
+nav a:hover, nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--brass); }
+
+main { padding-block: 3rem 4rem; }
+.view + .view { margin-top: 4rem; }
+.js .view + .view { margin-top: 0; }
+
+h1, h2, h3 { font-weight: 400; text-wrap: balance; }
+h1 { font-family: var(--display); font-size: clamp(2rem, 1.4rem + 2.4vw, 2.9rem); line-height: 1.12; margin: 0 0 1.5rem; }
+h2 { font-family: var(--display); font-size: 1.6rem; line-height: 1.2; margin: 3rem 0 1rem; padding-top: 0.9rem; border-top: 1px solid var(--rule); }
+h2:first-of-type { margin-top: 2rem; }
+h3 { font-family: var(--ui); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 2rem 0 0.75rem; }
+p { margin: 0 0 1.1rem; max-width: 40rem; }
+.lede { font-size: 1.2rem; line-height: 1.55; }
+.eyebrow { font-family: var(--ui); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brass); margin-bottom: 0.6rem; }
+
+/* Home */
+.intro { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: 2.5rem 3.5rem; align-items: start; }
+.intro > div { min-width: 0; }
+.portrait { aspect-ratio: 4 / 5; width: 100%; max-width: 100%; height: auto; object-fit: cover; display: block; background: var(--surface); }
+.post { font-family: var(--ui); font-size: 0.95rem; color: var(--muted); margin-bottom: 1.75rem; line-height: 1.5; }
+
+.highlights { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 2rem; border-top: 1px solid var(--ink); }
+.highlights li { padding-top: 1rem; min-width: 0; }
+.highlights .tag { font-family: var(--ui); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brass); display: block; margin-bottom: 0.35rem; }
+.highlights p { font-size: 1rem; line-height: 1.5; margin: 0; }
+
+/* Bibliography-style entries: date in the margin */
+.entries { list-style: none; padding: 0; margin: 0 0 0.5rem; }
+.entries li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 0 1.25rem; padding-block: 0.7rem; border-bottom: 1px solid var(--rule); }
+.entries li:last-child { border-bottom: 0; }
+.entries .when { font-family: var(--ui); font-size: 0.85rem; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 0.2rem; }
+.entries .what { min-width: 0; }
+.entries .note { display: block; font-family: var(--ui); font-size: 0.85rem; color: var(--muted); margin-top: 0.15rem; }
+.status { font-family: var(--ui); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brass); border: 1px solid currentColor; padding: 0.05rem 0.4rem; border-radius: 2px; margin-left: 0.4rem; white-space: nowrap; vertical-align: 0.1em; }
+.status.oa { color: var(--accent); }
+
+.books { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.75rem; }
+.books li { min-width: 0; }
+.cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cover:has(img) { border-color: transparent; box-shadow: 0 1px 3px rgba(0,0,0,0.18); }
+.cover { aspect-ratio: 2 / 3; max-width: 100%; border: 1px solid var(--rule); background: var(--surface); margin-bottom: 0.8rem; display: grid; place-items: center; font-family: var(--ui); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.books .title { font-style: italic; display: block; line-height: 1.35; }
+.books .pub { font-family: var(--ui); font-size: 0.85rem; color: var(--muted); display: block; margin-top: 0.3rem; }
+
+.plain { padding-left: 1.1rem; margin: 0 0 1rem; max-width: 42rem; }
+.plain li { margin-bottom: 0.45rem; }
+.courses { font-size: 1rem; color: var(--ink); max-width: 44rem; line-height: 1.9; }
+.courses span + span::before { content: " · "; color: var(--brass); }
+
+/* Contact */
+.contact-list { display: grid; gap: 1.25rem; margin: 0 0 2rem; }
+.contact-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 1rem; }
+.contact-row .label { font-family: var(--ui); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); min-width: 8rem; }
+.contact-row .addr { font-size: 1.2rem; overflow-wrap: anywhere; }
+.copy { font-family: var(--ui); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); background: none; border: 1px solid var(--rule); border-radius: 2px; padding: 0.2rem 0.55rem; cursor: pointer; }
+.copy:hover { border-color: var(--accent); }
+
+.cv-box { border: 1px solid var(--rule); background: var(--surface); padding: 1.5rem; max-width: 36rem; }
+.cv-box p:last-child { margin-bottom: 0; }
+.cv-link { display: inline-block; font-family: var(--ui); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.04em; text-decoration: none; color: var(--surface); background: var(--accent); padding: 0.55rem 1rem; border-radius: 2px; }
+.cv-link:hover { opacity: 0.9; }
+
+
+footer { border-top: 1px solid var(--rule); padding-block: 1.75rem 2.5rem; font-family: var(--ui); font-size: 0.8rem; line-height: 1.6; color: var(--muted); }
+footer p { max-width: 48rem; margin: 0 0 0.6rem; }
+
+@media (max-width: 760px) {
+  .intro { grid-template-columns: minmax(0, 1fr); }
+  .portrait { max-width: 13rem; grid-row: 1; }
+  .highlights { grid-template-columns: minmax(0, 1fr); }
+  .highlights li { padding-block: 1rem; border-bottom: 1px solid var(--rule); }
+  .books { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .entries li { grid-template-columns: minmax(0, 1fr); }
+  .entries .when { padding-top: 0; }
+}
+@media (max-width: 440px) { .books { grid-template-columns: minmax(0, 1fr); } .cover { max-width: 11rem; } }
+@media (prefers-reduced-motion: no-preference) { .view { animation: fade 0.25s ease-out; } @keyframes fade { from { opacity: 0.4; } to { opacity: 1; } } }
+</style>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Joshua Meeks, PhD">
+<meta property="og:description" content="Joshua Meeks, historian of strategy, war, and statecraft and Associate Professor of Strategy and Policy at the US Naval War College.">
+<meta property="og:url" content="https://joshuameeks.github.io/">
+<meta property="og:image" content="https://joshuameeks.github.io/images/joshua-meeks-headshot.webp">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="name" href="#home">Joshua Meeks<small>PhD</small></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#teaching">Teaching &amp; Wargaming</a></li>
+        <li><a href="#speaking">Speaking</a></li>
+        <li><a href="#cv">CV</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- HOME -->
+<section class="view" id="home" aria-label="Home">
+  <div class="intro">
+    <div>
+      <p class="eyebrow">Historian of strategy, war, and statecraft</p>
+      <h1>Associate Professor of Strategy and Policy, US Naval War College</h1>
+      <p class="lede">My work centers on judgment under uncertainty: how statesmen and commanders built coalitions, managed neutrality, and confronted defeat, with particular attention to the Revolutionary and Napoleonic Mediterranean.</p>
+      <p>I am the author of <em>France, Britain, and the Struggle for the Revolutionary Western Mediterranean</em> (Palgrave Macmillan, 2017) and <em>Napoleon Bonaparte: A Reference Guide to His Life and Works</em> (Rowman &amp; Littlefield, 2020), and I am under contract with Bloomsbury for <em>A Global History of the Napoleonic Era</em>.</p>
+      <p>At the Naval War College I direct the Fundamentals of Strategy course in the College of Distance Education, after five years directing the Strategy and War course for the Fleet Seminar Program. I design classroom simulations and take part in professional wargaming, building exercises that ask mid-career officers and civilians to reason through contested strategic problems where there is no school solution.</p>
+      <p>I am Book Review Editor and a member of the Editorial Board of the <a href="https://ijnh.seahistory.org/" target="_blank" rel="noopener"><em>International Journal of Naval History</em></a>.</p>
+      <p>I hold a PhD in History from Florida State University, where I was a member and Research Fellow of the Institute on Napoleon and the French Revolution. My dissertation, “Coalitions and Kingdoms: Revolutionary Statecraft in the Western Mediterranean,” was supervised by Rafe Blaufarb.</p>
+    </div>
+    <img class="portrait" src="images/joshua-meeks-headshot.webp" alt="Joshua Meeks" width="600" height="750">
+  </div>
+
+  <h2>Recent and forthcoming</h2>
+  <ul class="highlights">
+    <li><span class="tag">Under contract</span><p><a href="#research"><em>A Global History of the Napoleonic Era</em></a> (Bloomsbury, expected 2027)</p></li>
+    <li><span class="tag">New</span><p>Three strategy simulations in <a href="https://www.routledge.com/Short-Games-and-Active-Learning-in-Political-Science-Beating-the-Clock/Glasgow-Harvey-Gibb-Fielder/p/book/9781032744322" target="_blank" rel="noopener"><em>Short Games and Active Learning in Political Science: Beating the Clock</em></a> (Routledge, 2026)</p></li>
+    <li><span class="tag">Listen</span><p>“Britain’s Southern Campaign and the Fight for America,” <a href="#speaking"><em>Strategy Matters</em></a> podcast (2026)</p></li>
+  </ul>
+
+  <h2>Selected chapters and articles</h2>
+  <ul class="entries">
+    <li><span class="when">2027</span><span class="what">“Towards a Theory of Defeat,” in <em>Getting Them Out: Managing Strategic Withdrawal</em><span class="status">Forthcoming</span></span></li>
+    <li><span class="when">—</span><span class="what">“Weapons of the Strong? Neutrality in the Age of Revolutions,” <em>Clio@Thémis</em><span class="status">Forthcoming</span></span></li>
+    <li><span class="when">—</span><span class="what">“Designing, Delivering, and Assessing Joint Professional Military Education in Distance Learning,” in <em>The Routledge Handbook of Professional Military Education</em><span class="status">Forthcoming</span></span></li>
+    <li><span class="when">2024</span><span class="what">“The Savage State: Humans, Nature and Governance in Eighteenth-Century Corsica,” in <a href="https://www.whpress.co.uk/publications/2023/10/13/entire-of-itself/" target="_blank" rel="noopener"><em>Entire of Itself? Towards an Environmental History of Islands</em></a><span class="status oa">Open access</span></span></li>
+  </ul>
+  <p style="margin-top:1rem"><a href="#research">All research and publications</a></p>
+</section>
+
+<!-- RESEARCH -->
+<section class="view" id="research" aria-label="Research">
+  <p class="eyebrow">Research</p>
+  <h1>Strategy and diplomacy in the Age of Revolutions</h1>
+  <p class="lede">My research examines the strategic and diplomatic history of the Age of Revolutions, especially in the Mediterranean, alongside broader questions in strategic theory, including neutrality and the nature of defeat.</p>
+
+  <h2>Books</h2>
+  <ul class="books">
+    <li><div class="cover">Cover</div><span class="title">A Global History of the Napoleonic Era</span><span class="pub">Bloomsbury · under contract, expected 2027</span></li>
+    <li><div class="cover"><img src="images/napoleon-reference-guide.webp" alt="Cover of Napoléon Bonaparte: A Reference Guide to His Life and Works by Joshua Meeks" width="696" height="1024" loading="lazy"></div><span class="title">Napoleon Bonaparte: A Reference Guide to His Life and Works</span><span class="pub">Rowman &amp; Littlefield · 2020</span></li>
+    <li><div class="cover"><img src="images/france-britain-western-mediterranean.webp" alt="Cover of France, Britain, and the Struggle for the Revolutionary Western Mediterranean by Joshua Meeks" width="705" height="1000" loading="lazy"></div><span class="title">France, Britain, and the Struggle for the Revolutionary Western Mediterranean</span><span class="pub">Palgrave Macmillan · 2017</span><span class="pub">Series: War, Culture and Society, 1750–1850</span></li>
+  </ul>
+
+  <h2>Articles and chapters</h2>
+  <ul class="entries">
+    <li><span class="when">2027</span><span class="what">“Towards a Theory of Defeat,” in <em>Getting Them Out: Managing Strategic Withdrawal</em><span class="status">Forthcoming</span></span></li>
+    <li><span class="when">—</span><span class="what">“Designing, Delivering, and Assessing Joint Professional Military Education in Distance Learning,” in <em>The Routledge Handbook of Professional Military Education</em><span class="status">Forthcoming</span></span></li>
+    <li><span class="when">—</span><span class="what">“Weapons of the Strong? Neutrality in the Age of Revolutions,” <em>Clio@Thémis</em>, special issue “Les mondes de la neutralité prémoderne (1400–1800): institutions, normes et pratiques”<span class="status">Forthcoming</span></span></li>
+    <li><span class="when">2026</span><span class="what">“Atomic Questions,” “Kaiserliche Marine,” and “Strategic Crossroads: Athens vs. Melos,” in <a href="https://www.routledge.com/Short-Games-and-Active-Learning-in-Political-Science-Beating-the-Clock/Glasgow-Harvey-Gibb-Fielder/p/book/9781032744322" target="_blank" rel="noopener"><em>Short Games and Active Learning in Political Science: Beating the Clock</em></a>, ed. Derek Glasgow, Mark Harvey, Ryan Gibb, and James Fielder (Routledge)</span></li>
+    <li><span class="when">2024</span><span class="what">“The Savage State: Humans, Nature and Governance in Eighteenth-Century Corsica,” in <a href="https://www.whpress.co.uk/publications/2023/10/13/entire-of-itself/" target="_blank" rel="noopener"><em>Entire of Itself? Towards an Environmental History of Islands</em></a>, ed. Pavla Šimková and Milica Prokic (White Horse Press)<span class="status oa">Open access</span></span></li>
+  </ul>
+
+  <h2>Works in progress</h2>
+  <ul class="entries">
+    <li><span class="when">Article</span><span class="what">“Between the Rock and a Hard Place: Spanish Ontological Security during the Age of Revolutions”</span></li>
+    <li><span class="when">Article</span><span class="what">“Counting the Nation: Provincial Courts and the Making of the French Civil Code, 1801–1804”</span></li>
+  </ul>
+
+  <h2>Public scholarship</h2>
+  <ul class="entries">
+    <li><span class="when">2015</span><span class="what"><a href="https://ageofrevolutions.com/2015/12/14/counter-revolutionary-corsica-pasquale-paoli-and-diplomacy-in-the-british-mediterranean/" target="_blank" rel="noopener">“Counter-Revolutionary Corsica: Pasquale Paoli and Diplomacy in the British Mediterranean,”</a> <em>Age of Revolutions</em></span></li>
+    <li><span class="when">2018</span><span class="what"><a href="https://ageofrevolutions.com/2018/07/02/recovering-refugees-from-1794-touloun-to-today/" target="_blank" rel="noopener">“Recovering Refugees from 1794 Toulon to Today,”</a> <em>Age of Revolutions</em></span></li>
+  </ul>
+
+  <h2>Book reviews</h2>
+  <ul class="entries">
+    <li><span class="when">2024</span><span class="what">Ian Germani, <em>Dying for France</em>, in <em>Journal of Military History</em></span></li>
+    <li><span class="when">2021</span><span class="what">Philip Bowring, <em>Empire of the Winds: The Global Role of Asia’s Great Archipelago</em>, in <em>Naval War College Review</em> 74, no. 1</span></li>
+    <li><span class="when">2019</span><span class="what">Robert Holland, <em>The Warm South: How the Mediterranean Shaped the British Imagination</em>, in <em>Journal of British Studies</em> 58, no. 3</span></li>
+    <li><span class="when">2018</span><span class="what">James Kolla, <em>Sovereignty, International Law, and the French Revolution</em>, H-Diplo</span></li>
+  </ul>
+
+</section>
+
+<!-- TEACHING -->
+<section class="view" id="teaching" aria-label="Teaching and Wargaming">
+  <p class="eyebrow">Teaching &amp; Wargaming</p>
+  <h1>Teaching strategy to those who practice it</h1>
+  <p class="lede">I teach strategy to mid-career military officers and government civilians, and I design simulations and exercises that put students in the position of decision-makers facing incomplete information and contested choices.</p>
+
+  <h2>US Naval War College</h2>
+  <ul class="entries">
+    <li><span class="when">2026–</span><span class="what">Course Director, Fundamentals of Strategy, College of Distance Education</span></li>
+    <li><span class="when">2021–2026</span><span class="what">Course Director, Strategy and War, Fleet Seminar Program</span></li>
+    <li><span class="when">2020–</span><span class="what">Associate Professor of Strategy and Policy</span></li>
+  </ul>
+
+  <h2>Simulation and game design</h2>
+  <ul class="plain">
+    <li>Three published simulations, “Atomic Questions,” “Kaiserliche Marine,” and “Strategic Crossroads: Athens vs. Melos,” in <a href="https://www.routledge.com/Short-Games-and-Active-Learning-in-Political-Science-Beating-the-Clock/Glasgow-Harvey-Gibb-Fielder/p/book/9781032744322" target="_blank" rel="noopener"><em>Short Games and Active Learning in Political Science: Beating the Clock</em></a> (Routledge, 2026)</li>
+    <li>An interactive, AI-driven strategy exercise on the Vietnam War in which each turn is generated live, the seminar debates every decision, and the game deliberately withholds a school solution</li>
+  </ul>
+
+  <h2>Wargaming</h2>
+  <p>I take part in fleet-sponsored wargames as an analyst, red-cell player, and adjudicator (2025–present).</p>
+
+  <h2>Assessment and professional writing</h2>
+  <ul class="plain">
+    <li>Chair, Perry Award, Naval War College writing awards (2025–present)</li>
+    <li>Judge, Naval War College Foundation writing awards (2020–present)</li>
+  </ul>
+
+  <h2>Teaching with AI</h2>
+  <ul class="plain">
+    <li>“If You Can’t Beat Them, Join Them: Experimenting with AI in the Design and Execution of a Course,” AI in Practice, US Naval War College (2026)</li>
+  </ul>
+
+  <h2>Earlier teaching</h2>
+  <ul class="entries">
+    <li><span class="when">2016–2020</span><span class="what">Assistant Professor of History and Founding Director of the Honors Program, Northwest University</span></li>
+    <li><span class="when">2011–2016</span><span class="what">Instructor at the University of South Florida, Seminole State College, and Florida State University, including a study-abroad semester in London</span></li>
+  </ul>
+
+  <h3>Courses taught</h3>
+  <p class="courses"><span>Strategy and War</span><span>Fundamentals of Strategy</span><span>Early Modern Europe</span><span>19th-Century Europe</span><span>French Revolution and Napoleon</span><span>World War I</span><span>World War II</span><span>Modern Germany</span><span>Age of Empires</span><span>War and Society</span><span>Perspectives in Modern Warfare</span><span>Empires in Competition</span><span>Global History of Piracy</span><span>Refugees, Past and Present</span><span>History of Asia</span><span>Modern China</span><span>Modern India</span><span>History of Science</span><span>Historical Theory and Methods</span></p>
+</section>
+
+<!-- SPEAKING -->
+<section class="view" id="speaking" aria-label="Speaking and Media">
+  <p class="eyebrow">Speaking &amp; Media</p>
+  <h1>Podcasts, lectures, and papers</h1>
+  <p class="lede">I am glad to join podcasts, lectures, and panels on Napoleonic and Revolutionary-era warfare and diplomacy, naval history, strategic theory, and wargaming in education.</p>
+
+  <h2>Podcasts</h2>
+  <ul class="entries">
+    <li><span class="when">2026</span><span class="what"><a href="https://podcasts.apple.com/ca/podcast/episode-20-britains-southern-campaign-and-the-fight/id1838458633?i=1000786502078" target="_blank" rel="noopener">“Britain’s Southern Campaign and the Fight for America”</a><span class="note"><em>Strategy Matters</em>, episode 20 · Apple Podcasts</span></span></li>
+    <li><span class="when">Episode</span><span class="what"><a href="https://podcasts.apple.com/us/podcast/how-the-royal-navy-dominated-the-napoleonic-wars/id1629218432?i=1000769069475" target="_blank" rel="noopener">“How the Royal Navy Dominated the Napoleonic Wars”</a><span class="note"><em>Generals and Napoleon</em> · Apple Podcasts</span></span></li>
+    <li><span class="when">Episode</span><span class="what"><a href="https://podcasts.apple.com/us/podcast/the-battle-of-trafalgar-how-nelson-defeated-napoleon/id1629218432?i=1000732798378" target="_blank" rel="noopener">“The Battle of Trafalgar: How Nelson Defeated Napoleon at Sea”</a><span class="note"><em>Generals and Napoleon</em> · Apple Podcasts</span></span></li>
+    <li><span class="when">Episode</span><span class="what"><a href="https://podcasts.apple.com/us/podcast/clausewitz-vs-jomini-two-competing-theories-of-war/id1629218432?i=1000727625714" target="_blank" rel="noopener">“Clausewitz vs. Jomini: Two Competing Theories of War”</a><span class="note"><em>Generals and Napoleon</em> · Apple Podcasts</span></span></li>
+  </ul>
+
+  <h2>Watch</h2>
+  <ul class="entries">
+    <li><span class="when">2026</span><span class="what"><a href="https://youtu.be/OOtiHvWaHRE" target="_blank" rel="noopener">“Hidden Victories: Cumulative Pressure and the Long Road to Control in the Pacific”</a><span class="note">Fort Rodman Military Museum Speaker Series · YouTube</span></span></li>
+    <li><span class="when">2019</span><span class="what"><a href="https://youtu.be/qPySzULeBig" target="_blank" rel="noopener">“Corsica and the Ruins of Empire”</a><span class="note">Western Society for French History · H-France on YouTube</span></span></li>
+    <li><span class="when">2015</span><span class="what"><a href="https://www.youtube.com/watch?v=bPnE30i1zj0" target="_blank" rel="noopener">“Resources and Revolution: The Struggle for Corsican Timber”</a><span class="note">Society for French Historical Studies · H-France Salon, vol. 7, no. 8 · YouTube</span></span></li>
+  </ul>
+
+  <h2>Public lectures</h2>
+  <ul class="entries">
+    <li><span class="when">2026</span><span class="what"><a href="https://youtu.be/OOtiHvWaHRE" target="_blank" rel="noopener">“Hidden Victories: Cumulative Pressure and the Long Road to Control in the Pacific”</a><span class="note">Fort Rodman Military Museum Speaker Series</span></span></li>
+    <li><span class="when">2019</span><span class="what">“The Global and National in the Revolutionary Era”<span class="note">Keynote, Southeast Regional Graduate Conference</span></span></li>
+    <li><span class="when">2019</span><span class="what">“The Battle of Paoli and the Rhetoric of Liberty”<span class="note">Keynote, Cascade Chapter, Sons of the American Revolution</span></span></li>
+  </ul>
+
+  <h2>Selected conference papers</h2>
+  <ul class="entries">
+    <li><span class="when">2026</span><span class="what">“Empire at Home: Violence, Administration, and the Making of French Rule in Corsica, 1790–1815”<span class="note">Violence and Empire from the Early 1800s to the End of the Great War</span></span></li>
+    <li><span class="when">2025</span><span class="what">“Weapons of the Strong? Neutrality in the Age of Revolutions”<span class="note">Symposium: The Worlds of Premodern Neutrality</span></span></li>
+    <li><span class="when">2024</span><span class="what">“Gilbert Elliot, Imperfect Agent of Empire”<span class="note">Society for Military History</span></span></li>
+    <li><span class="when">2024</span><span class="what">“The Copenhagen Dilemma”<span class="note">Consortium on the Revolutionary Era</span></span></li>
+    <li><span class="when">2023</span><span class="what">“Defining a Theory of Defeat”<span class="note">Rethinking War</span></span></li>
+    <li><span class="when">2023</span><span class="what">“Blood from Stone: Ontology, History, and the State”<span class="note">Worlds Together? Futures of Global History</span></span></li>
+    <li><span class="when">2023</span><span class="what">“The Campaign Against Tuscan Neutrality during the First Coalition”<span class="note">Consortium on the Revolutionary Era</span></span></li>
+  </ul>
+</section>
+
+<!-- CV -->
+<section class="view" id="cv" aria-label="Curriculum Vitae">
+  <p class="eyebrow">Curriculum Vitae</p>
+  <h1>Full record</h1>
+  <div class="cv-box">
+    <p>My complete CV, with all publications, presentations, service, and awards.</p>
+    <p><a class="cv-link" href="cv/Joshua-Meeks-CV.pdf" target="_blank" rel="noopener">Open CV (PDF, 4 pages)</a></p>
+    <p class="post" style="margin:0">Last updated November 2026</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="view" id="contact" aria-label="Contact">
+  <p class="eyebrow">Contact</p>
+  <h1>Get in touch</h1>
+  <div class="contact-list">
+    <div class="contact-row"><span class="label">Personal</span><a class="addr" href="mailto:joshuameeksphd@gmail.com">joshuameeksphd@gmail.com</a><button class="copy" type="button" data-copy="joshuameeksphd@gmail.com">Copy</button></div>
+    <div class="contact-row"><span class="label">Institutional</span><a class="addr" href="mailto:joshua.meeks@usnwc.edu">joshua.meeks@usnwc.edu</a><button class="copy" type="button" data-copy="joshua.meeks@usnwc.edu">Copy</button></div>
+  </div>
+  <p>Publishers or reviewers interested in the <a href="https://ijnh.seahistory.org/" target="_blank" rel="noopener"><em>International Journal of Naval History</em></a> are welcome to contact me at either address.</p>
+  <h3>Elsewhere</h3>
+  <p><a href="https://www.linkedin.com/in/joshua-meeks-934224348/" rel="noopener">LinkedIn</a></p>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>The views expressed on this site are my own and do not reflect the official policy or position of the US Naval War College, the Department of the Navy, the Department of Defense, or the US Government.</p>
+    <p>© 2026 Joshua Meeks</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+  var views = Array.prototype.slice.call(document.querySelectorAll(".view"));
+  var links = document.querySelectorAll("nav a");
+  function show() {
+    var id = (location.hash || "#home").slice(1);
+    if (!views.some(function (v) { return v.id === id; })) id = "home";
+    views.forEach(function (v) { v.hidden = v.id !== id; });
+    links.forEach(function (a) {
+      if (a.getAttribute("href") === "#" + id) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", show);
+  show();
+  document.querySelectorAll(".copy").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var t = b.getAttribute("data-copy");
+      var done = function () { b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy"; }, 1600); };
+      try {
+        navigator.clipboard.writeText(t).then(done, function () { selectText(b.previousElementSibling); });
+      } catch (e) { selectText(b.previousElementSibling); }
+    });
+  });
+  function selectText(el) {
+    var r = document.createRange(); r.selectNodeContents(el);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+})();
+</script>
+</body>
+</html>
